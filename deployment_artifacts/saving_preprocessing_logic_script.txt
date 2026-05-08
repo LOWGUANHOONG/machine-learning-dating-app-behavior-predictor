@@ -1,0 +1,30 @@
+import joblib
+import json
+import os
+
+# Define the directory for deployment artifacts in Google Drive
+deploy_artifacts_dir = '/content/drive/MyDrive/ML OCC11 G13/deployment_artifacts'
+os.makedirs(deploy_artifacts_dir, exist_ok=True)
+
+# 1. Save the fitted OrdinalEncoder
+ordinal_encoder_path = os.path.join(deploy_artifacts_dir, 'ordinal_encoder.pkl')
+joblib.dump(ord_enc, ordinal_encoder_path)
+print(f"✅ OrdinalEncoder saved to {ordinal_encoder_path}")
+
+# 2. Save the fitted StandardScaler
+scaler_path = os.path.join(deploy_artifacts_dir, 'standard_scaler.pkl')
+joblib.dump(scaler, scaler_path)
+print(f"✅ StandardScaler saved to {scaler_path}")
+
+# 3. Save the ordered list of all final feature columns
+# This is crucial for ensuring input data to the model has the correct features in the correct order
+feature_columns_path = os.path.join(deploy_artifacts_dir, 'feature_columns.json')
+with open(feature_columns_path, 'w') as f:
+    json.dump(X.columns.tolist(), f)
+print(f"✅ Feature columns list saved to {feature_columns_path}")
+
+# 4. Save the mapping for target classes (for displaying predictions)
+engagement_mapping_path = os.path.join(deploy_artifacts_dir, 'engagement_mapping.json')
+with open(engagement_mapping_path, 'w') as f:
+    json.dump(reverse_mapping, f)
+print(f"✅ Engagement class mapping saved to {engagement_mapping_path}")
