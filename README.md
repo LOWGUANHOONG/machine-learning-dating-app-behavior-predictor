@@ -2,6 +2,11 @@
 
 I use Streamlit to create a simple app for predicting dating app engagement quality using a local-trained Auto-sklearn model.
 
+Actually, can ignore most of the file.
+Important one is the `app.py` this is our main file.
+And also the data preprocessing logic it lies in '/scipts/recreate_preprocessors.py'
+Others actually not that important, maybe after that you guys can do one more file for UI styling for our app. Maybe using Tailwind CSS to make it looks better, cuz now I do frontend and backend both in streamlit app. 
+
 ## 1) Prerequisites
 
 - Docker Desktop installed and running
