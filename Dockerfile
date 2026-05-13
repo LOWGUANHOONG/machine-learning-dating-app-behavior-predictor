@@ -11,6 +11,11 @@ RUN pip install --upgrade pip && \
 COPY app.py ./
 COPY final_autosklearn_model.pkl ./
 COPY deployment_artifacts/ ./deployment_artifacts/
+COPY X_train_final.csv ./
+COPY y_train_final.csv ./
+COPY X_test_final.csv ./
+COPY y_test_final.csv ./
+COPY dating_app_behavior_dataset.csv ./
 
 EXPOSE 8080
 CMD ["sh", "-c", "python3 -m streamlit run app.py --server.address=0.0.0.0 --server.port=${PORT:-8080} --server.headless=true"]
