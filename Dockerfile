@@ -12,5 +12,5 @@ COPY app.py ./
 COPY final_autosklearn_model.pkl ./
 COPY deployment_artifacts/ ./deployment_artifacts/
 
-EXPOSE 8501
-CMD ["python3", "-m", "streamlit", "run", "app.py", "--server.address=0.0.0.0"]
+EXPOSE 8080
+CMD ["sh", "-c", "python3 -m streamlit run app.py --server.address=0.0.0.0 --server.port=${PORT:-8080} --server.headless=true"]
